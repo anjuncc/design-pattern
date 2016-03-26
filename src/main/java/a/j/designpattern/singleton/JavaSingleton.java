@@ -8,7 +8,12 @@ public  class  JavaSingleton{
     private JavaSingleton() { }
     public static JavaSingleton  getInstance() {
         if( instance == null) {
-            instance = new JavaSingleton();
+            synchronized(JavaSingleton.class){
+                if(instance==null){
+                    instance = new JavaSingleton();
+                }
+            }
+
         }
         return instance ;
     }
